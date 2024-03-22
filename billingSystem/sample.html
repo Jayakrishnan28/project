@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predefined Objects Example</title>
+</head>
+<body onload="resetSess()">
+    <h2>Predefined Objects Example</h2>
+    <input type="text" id="sess" name="sess" onkeyup="sessionExample()"/>
+
+    <div id="timerMsg"></div>
+    <script>
+        function resetSess(){
+            sessionStorage.removeItem("sess");
+            localStorage.removeItem("locSess");
+            sessionStorage.getItem("sess");
+        }
+        function sessionExample(){
+            let sessData = document.getElementById('sess').value;
+            sessionStorage.setItem("sess", sessData);
+            localStorage.setItem("locSess", sessData);
+        }
+
+        function predinedFunction(){
+
+            setTimeout(()=>{ console.log("Vanthuten")}, 3000);
+            let timerVal = 0;
+            let timerMins = 0;
+            let timerSec = 0;
+            let timerMsg = document.getElementById("timerMsg");
+            setInterval(()=>{
+                if(timerSec==60){
+                    timerMins++;
+                    timerSec = 0;
+                }
+                timerMsg.innerHTML = timerMins + " : " + timerSec;
+                timerSec++;
+            }, 1000);
+        }
+        predinedFunction();
+        
+    </script>
+    
+</body>
+</html>
